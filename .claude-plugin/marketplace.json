@@ -1,0 +1,12 @@
+{
+  "name": "mobilife",
+  "description": "모비라이프(mabimobi.life) 플러그인",
+  "owner": { "name": "MobiLife", "url": "https://mabimobi.life" },
+  "plugins": [
+    {
+      "name": "mobilife",
+      "source": "./mobilife",
+      "description": "마비노기 모바일 숙제·코디·마이홈·데코·도감·시세·강화·마도저항"
+    }
+  ]
+}

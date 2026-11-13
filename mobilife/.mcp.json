@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "mobilife": {
+      "type": "http",
+      "url": "https://mabimobi.life/mcp",
+      "oauth": { "scopes": "presets homework deco public" }
+    }
+  }
+}

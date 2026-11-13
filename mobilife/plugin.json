@@ -1,0 +1,120 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "mobilife",
+  "version": "0.1.0",
+  "description": "마비노기 모바일 팬 서비스 모비라이프(mabimobi.life) — 숙제도우미, 드레스룸 코디, 마이홈 배치, 데코 수집, 도감·거래소 시세, 강화·마도저항 계산을 AI 에서 바로 씁니다.",
+  "author": {
+    "name": "MobiLife",
+    "url": "https://mabimobi.life"
+  },
+  "homepage": "https://mabimobi.life/ai",
+  "license": "MIT",
+  "keywords": [
+    "mabinogi-mobile",
+    "dressroom",
+    "myhome",
+    "homework"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "모비라이프",
+        "shortDescription": "마비노기 모바일 숙제·코디·시세",
+        "longDescription": "모비라이프 계정으로 연결하면 오늘 남은 숙제를 보고 체크하고, 드레스룸 코디와 마이홈 배치를 만들어 계정에 저장하고, 데코 수집 현황을 확인합니다. 도감 검색, 거래소 시세와 추이, 공지·이벤트·월드 상태, 각인 강화 비용과 마도저항 계획도 물어볼 수 있습니다. 저장한 코디·배치는 모비라이프 사이트에서 3D 로 바로 열립니다.",
+        "developerName": "MobiLife",
+        "category": "Lifestyle",
+        "capabilities": [
+          "숙제 확인·체크",
+          "코디 만들기·저장",
+          "마이홈 배치 저장",
+          "데코 수집 현황",
+          "도감·시세 조회",
+          "강화·마도저항 계산"
+        ],
+        "websiteURL": "https://mabimobi.life",
+        "supportURL": "https://mabimobi.life/ai",
+        "privacyPolicyURL": "https://mabimobi.life/legal/privacy",
+        "termsOfServiceURL": "https://mabimobi.life/legal/terms",
+        "defaultPrompt": [
+          "오늘 남은 숙제 알려줘",
+          "검은 계열로 겨울 코디 하나 만들어 줘",
+          "전설 무기 룬 15강에서 20강까지 얼마 들어?"
+        ],
+        "brandColor": "#3B5BDB",
+        "brandColorDark": "#8FA6FF",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/icon.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "남은 숙제 요약",
+              "prompt": "오늘 남은 숙제 캐릭터별로 알려줘",
+              "tools_triggered": [
+                "homework_today"
+              ],
+              "expected_behavior": "캐릭터별로 남은 일일·주간 숙제를 묶어 보여 주고, 체크는 하지 않는다."
+            },
+            {
+              "description": "요청한 숙제만 체크",
+              "prompt": "본캐 요일 던전 다 했어, 체크해 줘",
+              "tools_triggered": [
+                "homework_today",
+                "homework_check"
+              ],
+              "expected_behavior": "해당 캐릭터의 그 숙제 하나만 체크하고 결과를 알려 준다."
+            },
+            {
+              "description": "코디 만들기와 저장",
+              "prompt": "여자 캐릭터로 검은색 계열 겨울 코디 만들어서 저장해 줘",
+              "tools_triggered": [
+                "dressroom_search_costumes",
+                "dressroom_options",
+                "dressroom_save"
+              ],
+              "expected_behavior": "실제 의상 key 로 코디를 새로 저장하고, 버려진 값과 사이트 링크를 보여 준다."
+            },
+            {
+              "description": "시세 추이",
+              "prompt": "최근 2주 거래소에서 강화 재연소 촉매 가격 어때?",
+              "tools_triggered": [
+                "market_prices",
+                "market_history"
+              ],
+              "expected_behavior": "현재가와 기간 최저·최고·추세를 요약한다."
+            },
+            {
+              "description": "강화 비용",
+              "prompt": "전설 무기 룬 15강 게이지 30%에서 20강까지 비용 계산해 줘",
+              "tools_triggered": [
+                "enhance_cost"
+              ],
+              "expected_behavior": "단계별 기대 재료와 데카 환산 비용을 보여 준다."
+            }
+          ],
+          "negative": [
+            {
+              "description": "다른 게임 질문",
+              "prompt": "리그 오브 레전드 이번 패치 정리해 줘"
+            },
+            {
+              "description": "타인 계정 정보",
+              "prompt": "다른 사람 캐릭터 숙제 기록 보여 줘"
+            },
+            {
+              "description": "게임 자동 조작",
+              "prompt": "게임에 접속해서 내 숙제를 대신 해 줘"
+            }
+          ]
+        }
+      },
+      "publication": {
+        "countries": [
+          "KR"
+        ],
+        "release_notes": "첫 공개: 숙제·코디·마이홈·데코·도감·시세·강화·마도저항."
+      }
+    }
+  }
+}
