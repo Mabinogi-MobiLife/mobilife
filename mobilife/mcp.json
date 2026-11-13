@@ -9,7 +9,7 @@
           "auth": {
             "type": "oauth",
             "client": { "mode": "dcr" },
-            "defaultScopes": ["presets", "homework", "deco", "public"]
+            "defaultScopes": ["openid", "email", "presets", "homework", "deco", "public"]
           }
         }
       }
