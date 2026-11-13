@@ -76,6 +76,18 @@
               "expected_behavior": "실제 의상 key 로 코디를 새로 저장하고, 버려진 값과 사이트 링크를 보여 준다."
             },
             {
+              "description": "캐릭터 코스프레 코디",
+              "prompt": "진격의 거인 미카사 코스프레를 하고 싶어. 비슷한 의상과 색으로 준비해 줘",
+              "tools_triggered": [
+                "dressroom_costume_groups",
+                "dressroom_search_costumes",
+                "dressroom_costume_detail",
+                "dressroom_options",
+                "dressroom_save"
+              ],
+              "expected_behavior": "짧은 밀리터리 재킷·흰 바지·롱부츠·검은 단발을 생김새 카드로 찾아 원작 색으로 염색해 저장하고 링크를 준다."
+            },
+            {
               "description": "시세 추이",
               "prompt": "최근 2주 거래소에서 강화 재연소 촉매 가격 어때?",
               "tools_triggered": [
