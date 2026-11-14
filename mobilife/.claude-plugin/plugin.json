@@ -1,7 +1,7 @@
 {
   "name": "mobilife",
   "displayName": "모비라이프",
-  "version": "0.2.11",
+  "version": "0.2.12",
   "description": "마비노기 모바일 팬 서비스 모비라이프(mabimobi.life) — 숙제도우미, 드레스룸 코디, 마이홈 배치, 데코 수집, 도감·거래소 시세, 랭킹·스텔라그램, 강화·마도저항 계산, 연주 악보 찾기를 AI 에서 바로 씁니다.",
   "author": {
     "name": "MobiLife",
