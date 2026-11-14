@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "mobilife",
-  "version": "0.2.7",
-  "description": "마비노기 모바일 팬 서비스 모비라이프(mabimobi.life) — 숙제도우미, 드레스룸 코디, 마이홈 배치, 데코 수집, 도감·거래소 시세, 강화·마도저항 계산을 AI 에서 바로 씁니다.",
+  "version": "0.2.8",
+  "description": "마비노기 모바일 팬 서비스 모비라이프(mabimobi.life) — 숙제도우미, 드레스룸 코디, 마이홈 배치, 데코 수집, 도감·거래소 시세, 랭킹·스텔라그램, 강화·마도저항 계산을 AI 에서 바로 씁니다.",
   "author": {
     "name": "MobiLife",
     "url": "https://mabimobi.life"
@@ -19,8 +19,8 @@
     "com.openai": {
       "interface": {
         "displayName": "모비라이프",
-        "shortDescription": "마비노기 모바일 숙제·코디·시세",
-        "longDescription": "모비라이프 계정으로 연결하면 오늘 남은 숙제를 보고 체크하고, 드레스룸 코디와 마이홈 배치를 만들어 계정에 저장하고, 데코 수집 현황을 확인합니다. 도감 검색, 거래소 시세와 추이, 공지·이벤트·월드 상태, 각인 강화 비용과 마도저항 계획도 물어볼 수 있습니다. 저장한 코디·배치는 모비라이프 사이트에서 3D 로 바로 열립니다.",
+        "shortDescription": "마비노기 모바일 숙제·코디·시세·랭킹",
+        "longDescription": "모비라이프 계정으로 연결하면 오늘 남은 숙제를 보고 체크하고, 드레스룸 코디와 마이홈 배치를 만들어 계정에 저장하고, 데코 수집 현황을 확인합니다. 도감 검색, 거래소 시세와 추이, 공지·이벤트·월드 상태, 랭킹(종합·전투력·어비스·나이트메어 드릴·길드)과 서버별 스텔라그램 순위, 각인 강화 비용과 마도저항 계획도 물어볼 수 있습니다. 저장한 코디·배치는 모비라이프 사이트에서 3D 로 바로 열립니다.",
         "developerName": "MobiLife",
         "category": "Lifestyle",
         "capabilities": [
@@ -29,6 +29,7 @@
           "마이홈 배치 저장",
           "데코 수집 현황",
           "도감·시세 조회",
+          "랭킹·스텔라그램 조회",
           "강화·마도저항 계산"
         ],
         "websiteURL": "https://mabimobi.life",
@@ -95,6 +96,22 @@
                 "market_history"
               ],
               "expected_behavior": "현재가와 기간 최저·최고·추세를 요약한다."
+            },
+            {
+              "description": "지난 시즌 어비스 직업 랭킹",
+              "prompt": "지난 시즌 룬다 어비스 전사 직업 랭킹 1등 누구야",
+              "tools_triggered": [
+                "ranking_lookup"
+              ],
+              "expected_behavior": "지난 어비스 시즌의 기간을 밝히고 전 서버 전사 직업 1위의 이름·서버·점수와 사이트 링크를 준다. 룬다 어비스를 서버로 보지 않는다."
+            },
+            {
+              "description": "이번 달 스텔라그램 서버 1위",
+              "prompt": "이번 달 던컨 스텔라그램 1등 누구야",
+              "tools_triggered": [
+                "stellagram_ranking"
+              ],
+              "expected_behavior": "던컨 서버의 이번 달 지금 1위와 픽 수, 수집 시각, 사이트 링크를 준다."
             },
             {
               "description": "강화 비용",
