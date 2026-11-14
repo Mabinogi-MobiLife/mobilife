@@ -13,7 +13,8 @@ description: 마비노기 모바일 공식 공지·업데이트 노트·직업 �
 2. 결과 유형(상향·하향 …)은 AI 분류라 틀릴 수 있다. **문구를 읽고**, 같은 스킬의 앞뒤 변경을 시간순으로 함께 말한다
    (예: 처음 도입된 하향 → 나중에 완화).
 3. `missing` 이 붙은 항목은 낱말 하나가 빠진 근처 결과다. 공지 문구는 '감쇠' 대신 '감소' 처럼 다르게 쓸 수 있으니 버리지 말고 확인한다.
-4. 근거로 적용일과 공지 링크(`notices` 의 `official_url`·`link`)를 함께 준다. 원문 맥락이 필요하면 `notice_detail(identifier, query=스킬 이름)`.
+4. 날짜는 `update_date`(공지 제목의 업데이트·점검 날짜)가 있으면 그것을 적용일로 말한다 — `date` 는 공지 게시일이라 하루 이를 수 있다.
+   근거로 공지 링크(`notices` 의 `official_url`·`link`)를 함께 준다. 원문 맥락이 필요하면 `notice_detail(identifier, query=스킬 이름)`.
 
 ## 공지 본문 찾기
 
@@ -24,9 +25,10 @@ description: 마비노기 모바일 공식 공지·업데이트 노트·직업 �
 
 ## 수정 이력
 
-- 가장 많이 고쳐진 공지: `notice_search(sort="most_revised")`. 횟수는 사이트의 「수정 N회」와 같은 판 번호 기준이다.
-- `older_versions_missing` 이 있는 글은 옛 판이 보관돼 있지 않아 횟수를 판별로 확인할 수 없다. 답에 그 사실을 밝히고,
-  판이 온전한 글 기준 순위는 `full_history_only=true` 로 함께 보여 준다.
+- 가장 많이 고쳐진 공지: `notice_search(sort="most_revised")`. 횟수는 모비라이프 공지 이력의 「수정 N회」와 같은 판 번호 기준이다
+  (공식 홈페이지가 내는 숫자가 아니다).
+- `older_versions_missing` 이 있는 글은 옛 판이 모비라이프에 보관돼 있지 않아 횟수를 판별로 확인할 수 없다. 답에 그 사실을 밝히고,
+  판이 온전한 글 중 1위(`top_full_history`)도 함께 말한다. 더 보려면 `full_history_only=true`.
 - 언제 무엇이 바뀌었는지는 `notice_history(identifier)`, 한 판의 바뀐 줄 전체는 `version` 을 준다.
 
 ## 답하는 모양
