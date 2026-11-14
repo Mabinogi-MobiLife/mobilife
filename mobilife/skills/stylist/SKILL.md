@@ -29,6 +29,7 @@ description: 마비노기 모바일 드레스룸 코디를 만들거나 고쳐�
    - **후보를 좁힌 뒤** `dressroom_costume_detail(keys)` 로 색 칸 표(칸 번호·위치·면적·기본색), 같은 시리즈 다른 부위(`series` — 세트 맞추기), 모양이 비슷한 옷(`similar`)을 본다. 마음에 드는 옷의 대안은 `dressroom_search_costumes(similar_to=key)` 로 찾는다.
    - 부위: hat · top · bottom · gloves · shoes · robe · face-deco · eye-deco · ear-deco.
 4. **외형.** 얼굴·헤어·눈·입·문신은 `dressroom_options` 의 key 만 쓴다. 헤어 이름은 「단발」 대신 숏·보브·픽시·베베컷(짧은 머리), 롱·포니테일·트윈(긴 머리) 같은 말을 쓴다 — `query` 로 찾을 때 이 말을 쓴다. 피부·머리·눈 색은 팔레트 값만 저장된다 — 팔레트는 `dressroom_options(colors=true)`(또는 `slot=hair`·`slot=eyes`)로 받는다. 원작 색 rgb 를 그대로 보내도 미리보기·저장이 가장 가까운 팔레트 색으로 바꾸고 `adjusted`(`asked`→`used`)로 알려 준다 — 바뀐 색을 그림으로 확인하고 사용자에게 말한다.
+   - **외형은 생김새 태그로 고른다.** 선택지마다 렌더를 보고 붙인 태그가 있다(헤어 `len` 기장·`style` 묶음·`bangs` 앞머리·`curl`, 눈 `shape`·`mood`). 모양으로 거른다 — 예) 경단·트윈테일 머리 `dressroom_options(hair_style=["트윈테일","경단"])`, 검은 단발 `length=["단발"]`, 날카로운 눈 `slot="eyes", mood=["날카로운"]`. 장신구는 의상 `features`(티아라·왕관·초커·머리핀·뿔·고양이 귀·꼬리·날개 …)로, 콜라보 캐릭터는 작품·캐릭터 이름(한·일·영)을 `query` 로 주면 의상·외형 한 벌이 다 나온다.
    - `hair_type=TwoColor` 헤어: `hair_two_tone` 묶음 하나로 `colors.hair`·`colors.hair2` 를 함께 정한다.
    - `hair_type=Accessory` 헤어: `hair_accessory` 중 하나로 `colors.hairAccessory` 를 정한다.
 5. **염색.** 카드의 `dye`(또는 상세 카드의 `colors`)로 어느 칸이 몸판·소매·깃·장식인지와 면적을 보고 `dye: {"0": [r,g,b], ...}` 로 칠한다 — 넓은 칸에 주색, 좁은 칸에 포인트색. 의상 염색은 팔레트 제한이 없다. 바꾸지 않을 칸은 넣지 않는다. 피부·머리색·고정 칸은 바꿀 수 없다.
